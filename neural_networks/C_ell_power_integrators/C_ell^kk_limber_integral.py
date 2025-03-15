@@ -253,12 +253,6 @@ def simpson_jax(y, x, axis=-1):
 ################################################################### C_ell Plotting ###################################################################
 
 # -------------------------------------------------------------------
-# JAX-compatible weight function
-# -------------------------------------------------------------------
-def weight_function_jax(z):
-    return jnp.exp(-0.5 * ((z - 3.)/0.1)**2) / (0.1 * jnp.sqrt(2*jnp.pi))
-
-# -------------------------------------------------------------------
 # JAX-compatible cl_limber function using the new interpolate_jax and emulate_jax
 # -------------------------------------------------------------------
 def cl_limber_jax(l, allpars, zmin=1., zmax=20., nz=50, predicted_grid=None):
