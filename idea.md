@@ -1,0 +1,17 @@
+
+Project Idea: Neural Network Emulator for Cosmological Power Spectrum Calculation:
+
+* This project aims to drastically accelerate the computation of cosmological power spectra — traditionally calculated using numerical methods (e.g., CAMB and CLASS) — by developing efficient neural network emulators. These emulators will enable rapid calculations necessary for integration into advanced cosmological analyses, including reinforcement learning frameworks.
+* The lensing spectrum quantifies the magnitude of a source due to lensing at different angular scales, and can be measured for a particular section of the sky. It can also be calculated using the power spectrum via the Limber integral. It is possible to find the parameters of the universe that lead to the lensing spectrum for that part of the universe by calculating the lensing spectrum for a given set of parameters via the Limber integral and using reinforcement learning (e.g. a gradient descent algorithm) to change the parameters a little bit at a time until the calculated lensing spectrum matches the measured one, however this requires millions of iterations. The fastest way to calculate the integral is to calculate the power spectrum for a set of time-scales (same set of length-scales every time) and interpolate between them to create a grid of power spectrum values which can be "picked from" rather than re-calculating the power spectrum thousands of times. Thus, the power spectrum is only calculated a handful of times rather than at every $k$ and $z$ required. The grid can be made various ways: using a repository, like CAMB, to calculate the power spectra at the various $z$'s, calculating a power spectrum at $n$ time-scales; using a neural network to emulate the power spectra at the various $z$'s, where it has to be run $n$ times for $n$ different time-scales; or using a neural network to emulate the power spectra at the various $z$'s, where it produces all $n$ power spectra simultaneously. The current problem with power spectrum calcuations is that when they are performed the classic way (by solving a set of differential equations), it takes a significant amount of time (on the order of seconds). The solution to this problem is to train a neural network to produce power spectra, instead of calculating it. The key idea here is to train a neural network to produce all $n$ power spectra simultaneously, rather than having to produce each power spectrum inividually, either via a neural network or CAMB. This drastically reduces the time to calculate the Limber integral and hence reduces time to determine parameters of the universe via reinforcement learning.
+
+- **Approach**
+    - Power Spectrum Emulation
+		- Train neural networks to emulate both linear and non-linear cosmological power spectra.
+		- Generate training and testing datasets via high-performance computing using CAMB, employing Latin Hypercube Sampling (LHS) for robust parameter coverage.
+	- Performance Comparison:
+        - Compare neural networks based on emulation and interpolation speed at specific cosmological length scales (k) and time scales (z).
+    - Integration into Limber Integral Calculations
+        - Utilise optimised neural networks to rapidly calculate the Limber integral, crucial for evaluating the angular power spectrum of weak lensing convergence.
+    - Neural Network Architecture Exploration:
+        - Investigate and optimise various feed-forward neural network architectures.
+        - valuate architectures with varying numbers of hidden layers and nodes.
